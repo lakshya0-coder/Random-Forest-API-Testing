@@ -1,0 +1,42 @@
+{
+  "info": {
+    "name": "COVID Toy RF API",
+    "_postman_id": "cf0f8d9a-0000-4000-8000-000000000000",
+    "description": "Simple collection to test the RandomForest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Predict - single",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"age\": 27,\n  \"gender\": \"Male\",\n  \"fever\": 100,\n  \"cough\": \"Mild\",\n  \"city\": \"Delhi\"\n}"
+        },
+        "url": {"raw": "http://localhost:8000/predict", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["predict"]}
+      }
+    },
+    {
+      "name": "Predict - batch",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n  {\"age\":27,\"gender\":\"Male\",\"fever\":100,\"cough\":\"Mild\",\"city\":\"Delhi\"},\n  {\"age\":60,\"gender\":\"Female\",\"fever\":103,\"cough\":\"Mild\",\"city\":\"Kolkata\"}\n]"
+        },
+        "url": {"raw": "http://localhost:8000/predict_batch", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["predict_batch"]}
+      }
+    },
+    {
+      "name": "Retrain",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {"raw": "http://localhost:8000/train", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["train"]}
+      }
+    }
+  ]
+}
